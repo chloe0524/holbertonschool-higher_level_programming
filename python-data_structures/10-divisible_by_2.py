@@ -2,7 +2,7 @@
 
 
 def divisible_by_2(my_list=[]):
-    list = []
+
     if my_list is None:
         return None
     for i in my_list:
