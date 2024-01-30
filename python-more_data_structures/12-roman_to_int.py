@@ -14,10 +14,8 @@ def roman_to_int(roman_string):
 
     if not (isinstance(roman_string, str) and roman_string):
         return 0
-
     result = 0
     prev_value = 0
-
     for char in reversed(roman_string):
         current_value = roman_dict[char]
         if current_value < prev_value:
