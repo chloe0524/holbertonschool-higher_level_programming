@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 
+# issue github test
 def square_matrix_simple(matrix=[]):
     new_matrix = []
     for row in matrix:
