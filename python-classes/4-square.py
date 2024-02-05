@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 "Creates a Square class to make a square"
 
+
 class Square():
     "define square class for python."
 
@@ -19,7 +20,7 @@ class Square():
         """"
         Getter method to get size
 
-        Returns: 
+        Returns:
             size of square
         """
         return self.__size
@@ -32,7 +33,7 @@ class Square():
         Args:
             value(int): size of square as
             non-negative int
-        
+
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
