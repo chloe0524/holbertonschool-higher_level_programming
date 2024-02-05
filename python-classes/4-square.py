@@ -5,16 +5,35 @@ class Square():
     "define square class for python."
 
     def __init__(self, size=0):
+        """
+        Initialize a square.
+
+        Args:
+            size(int): size of the square as
+            non-negative int
+        """
         self.__size = size
 
     @property
     def size(self):
-        "getter method to get size"
+        """"
+        Getter method to get size
+
+        Returns: 
+            size of square
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
-        "setter method to set size of square"
+        """
+        Setter method to set size of square
+
+        Args:
+            value(int): size of square as
+            non-negative int
+        
+        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -23,5 +42,10 @@ class Square():
             self.__size = value
 
     def area(self):
-        "calculate area of square"
+        """
+        calculate area of square
+
+        Returns:
+            area of square(int)
+        """
         return self.__size**2
