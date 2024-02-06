@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+
+
+"Creates a Square class to make a square"
+
+
 class Square():
     "define square class for python."
 
