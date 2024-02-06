@@ -45,6 +45,33 @@ class Square():
         else:
             self.__size = value
 
+    @property
+    def position(self):
+        """
+        Getter method to get position
+
+        Returns:
+            position of square as a tuple
+        """
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        """
+        Setter method to set position of square
+
+        Args:
+            value (tuple): position of square as a tuple of 2 non-negative ints
+
+        Raises:
+            TypeError: If position is not a tuple of 2 non-negative integers
+        """
+        if not isinstance(value, tuple) or len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not all(isinstance(i, int) and i >= 0 for i in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
+
     def area(self):
         """
         calculate area of square
@@ -67,29 +94,3 @@ class Square():
                 for _ in range(self.size):
                     print("#", end="")
                 print()
-
-    @property
-    def position(self):
-        """
-        Getter method to get position
-
-        Returns:
-            position of square as a tuple
-        """
-        return self.__position
-
-    @position.setter
-    def position(self, value):
-        """
-        Setter method to set position of square
-
-        Args:
-            value (tuple): position of square as a tuple of 2 non-negative ints
-
-        Raises:
-            TypeError: If position is not a tuple of 2 non-negative integers
-        """
-        if not isinstance(value, tuple) or len(value) != 2 or \
-           not all(isinstance(i, int) and i >= 0 for i in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
