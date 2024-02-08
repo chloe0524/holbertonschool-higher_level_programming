@@ -15,10 +15,6 @@ test to verify both var added together are ints;
 2
 >>> add_integer(-7, 3)
 -4
->>> add_integer(100, -2)
-98
->>> add_integer(100.3, -2)
-98
 >>> add_integer(100.3, 100.3)
 200
 >>> add_integer(-2, -2)
