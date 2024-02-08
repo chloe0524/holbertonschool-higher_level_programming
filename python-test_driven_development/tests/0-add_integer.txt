@@ -3,41 +3,45 @@
 """
 test file for task 0 of project TDD, 5 required
 expected usage: add 2 integers using 'add_integer' function
-
-
 """
+
 test to verify both var added together are ints;
-"""
 
 >>> add_integer(1, 25)
 26
-
 >>> add_integer(12, 8)
 20
-
 >>> add_integer(1, 1)
 2
-
 >>> add_integer(-7, 3)
 -4
+>>> add_integer(2)
+100
+>>> add_integer(100.3, -2)
+98
+>>> add_integer(100.3, 100.3)
+200
+>>> add_integer(-2, -2)
+-4
 
->>> add_integer(-4, 5)
-1
-
-"""
 test to verify failure of cases where the type of the var != int;
-"""
+
 >>> add_integer(3, 'hello')
 Traceback (most recent call last):
   ...
 TypeError: b must be an integer
 
->>> add_integer('world', 6)
+>>> add_integer(None)
 Traceback (most recent call last):
   ...
 TypeError: a must be an integer
 
->>> add_integer(None)
+>>> add_integer(3, {1, 2 , 3})
+Traceback (most recent call last):
+  ...
+TypeError: b must be an integer
+
+>>> add_integer({4, 5 , 6}, 6)
 Traceback (most recent call last):
   ...
 TypeError: a must be an integer
