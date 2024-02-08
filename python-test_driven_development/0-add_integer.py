@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+
 """
     module adding two int together and defining expections
 
     Args:
         a, b = integers
     """
+
 
 def add_integer(a, b=98):
     if not isinstance(a, (int, float)):
