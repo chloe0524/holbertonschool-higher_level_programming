@@ -1,0 +1,39 @@
+"""
+"""
+test file for task 0 of project TDD, 5 required
+expected usage: add 2 integers using 'add_integer' function
+"""
+>>> add_integer = __import__('0-add_integer').add_integer
+
+"""
+test to verify both var added together are ints;
+"""
+
+>>> add_integer(1, 25)
+26
+
+>>> add_integer(12, 8)
+20
+
+>>> add_integer(1, 1)
+2
+
+>>> add_integer(7, 3)
+10
+
+"""
+test to verify failure of cases where the type of the var != int;
+"""
+>>> add_integer(3, 'hello')
+TypeError: b must be an integer
+
+>>> add_integer
+TypeError: a must be an integer
+
+>>> add_integer(3, {1, 2 , 3})
+TypeError: b must be an integer
+
+>>> add_integer({4, 5 , 6}, 6)
+TypeError: a must be an integer
+
+"""
