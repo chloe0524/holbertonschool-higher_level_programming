@@ -1,28 +1,31 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
 """
 test file for task 0 of project TDD, 5 required
 expected usage: add 2 integers using 'add_integer' function
 """
->>> add_integer = __import__('0-add_integer').add_integer
 
-"""
 test to verify both var added together are ints;
-"""
 
 >>> add_integer(1, 25)
 26
-
 >>> add_integer(12, 8)
 20
-
 >>> add_integer(1, 1)
 2
-
 >>> add_integer(-7, 3)
 -4
+>>> add_integer(2)
+100
+>>> add_integer(100.3, -2)
+98
+>>> add_integer(100.3, 100.3)
+200
+>>> add_integer(-2, -2)
+-4
 
-"""
 test to verify failure of cases where the type of the var != int;
-"""
+
 >>> add_integer(3, 'hello')
 Traceback (most recent call last):
   ...
@@ -42,4 +45,5 @@ TypeError: b must be an integer
 Traceback (most recent call last):
   ...
 TypeError: a must be an integer
+
 """
