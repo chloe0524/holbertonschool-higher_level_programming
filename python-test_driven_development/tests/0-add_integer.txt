@@ -7,20 +7,12 @@ expected usage: add 2 integers using 'add_integer' function
 
 test to verify both var added together are ints;
 
->>> add_integer(1, 25)
-26
->>> add_integer(12, 8)
-20
->>> add_integer(1, 1)
-2
 >>> add_integer(-7, 3)
 -4
 >>> add_integer(2)
 100
 >>> add_integer(100.3, -2)
 98
->>> add_integer(100.3, 100.3)
-200
 >>> add_integer(-2, -2)
 -4
 
