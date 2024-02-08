@@ -17,8 +17,8 @@ test to verify both var added together are ints;
 >>> add_integer(1, 1)
 2
 
->>> add_integer(7, 3)
-10
+>>> add_integer(-7, 3)
+-4
 
 """
 test to verify failure of cases where the type of the var != int;
