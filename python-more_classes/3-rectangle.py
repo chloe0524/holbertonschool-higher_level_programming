@@ -2,12 +2,14 @@
 """This is a module for a rectangle class."""
 
 
-class Rectangle:
+class Rectangle():
     """This is a class for a rectangle object."""
+    pass
+
     def __init__(self, width=0, height=0):
         """This method constructs the object."""
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     @property
     def width(self):
@@ -16,39 +18,51 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """This property sets the width of the rectangle."""
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
+        """
+        get width.
+
+        Args:
+            value.
+        """
+        if not isinstance(value, int):
+            raise TypeError('width must be an integer')
         if value < 0:
-            raise ValueError("width must be >= 0")
+            raise ValueError('width must be >= 0')
         self.__width = value
 
     @property
     def height(self):
-        """This property returns the height of the rectangle."""
+        """property to retrieve height of rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """This property sets the height of the rectangle."""
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
+        """
+        get height.
+
+        Args:
+            value.
+        """
+        if not isinstance(value, int):
+            raise TypeError('height must be an integer')
         if value < 0:
-            raise ValueError("height must be >= 0")
+            raise ValueError('height must be >= 0')
         self.__height = value
 
     def area(self):
-        """This method returns the area of the rectangle."""
-        return self.width * self.height
+        """method returns area of rectangle."""
+        return self.__height * self.__width
 
     def perimeter(self):
-        """This method returns the perimeter of the rectangle."""
-        if self.width == 0 or self.height == 0:
-            return 0
-        return (self.width * 2) + (self.height * 2)
+        """method returns perimeter of rectangle"""
+        if self.__width == 0:
+            if self.__height == 0:
+                return 0
+        return ((self.__width + self.__height) * 2)
 
     def __str__(self):
-        """This method returns the string representation of the rectangle."""
-        if self.width == 0 or self.height == 0:
-            return ""
+        """method to print the rectangle with the character #."""
+        if self.__width == 0:
+            if self.__height == 0:
+                return ('')
         return "\n".join(["#" * self.width for _ in range(self.height)])
