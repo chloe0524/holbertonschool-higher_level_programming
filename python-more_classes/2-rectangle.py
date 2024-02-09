@@ -7,7 +7,7 @@ class Rectangle that defines a rectangle
 
 class Rectangle():
     "class to draw a rectangle using the Rectangle class"
-
+    pass
     def __init__(self, width=0, height=0):
         """
         initialize rectangle instance
