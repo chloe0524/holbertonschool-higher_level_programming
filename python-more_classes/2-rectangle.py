@@ -6,8 +6,11 @@ class Rectangle that defines a rectangle
 
 
 class Rectangle():
-    "class to draw a rectangle using the Rectangle class"
+    """
+    class to draw a rectangle using the Rectangle class
+    """
     pass
+
     def __init__(self, width=0, height=0):
         """
         initialize rectangle instance
@@ -57,11 +60,9 @@ class Rectangle():
             raise ValueError('height must be >= 0')
         self.__height = value
 
-
     def area(self):
         "method returns area of rectangle"
         return self.__height * self.__width
-
 
     def perimeter(self):
         "method returns perimeter of rectangle"
@@ -69,5 +70,3 @@ class Rectangle():
             if self.__height == 0:
                 return 0
         return ((self.__width + self.__height) * 2)
-pass
-
