@@ -64,5 +64,5 @@ class Rectangle():
         """method to print the rectangle with the character #."""
         if self.__width == 0:
             if self.__height == 0:
-                return ('')
+                return ""
         return "\n".join(["#" * self.width for _ in range(self.height)])
