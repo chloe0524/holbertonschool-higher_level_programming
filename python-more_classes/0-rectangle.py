@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-"empty class Rectangle for now"
+"module to make a Rectangle"
 
 
 class Rectangle():
-
-
-    ...
+    "empty class for now"
     pass
