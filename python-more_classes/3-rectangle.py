@@ -3,11 +3,11 @@
 
 
 class Rectangle():
-  """This is a class for a rectangle object."""
+    """This is a class for a rectangle object."""
     pass
 
     def __init__(self, width=0, height=0):
-         """This method constructs the object."""
+        """This method constructs the object."""
         self.__width = width
         self.__height = height
 
@@ -18,12 +18,7 @@ class Rectangle():
 
     @width.setter
     def width(self, value):
-        """
-        get width.
-
-        Args:
-            value.
-        """
+        """This property returns the height of the rectangle."""
         if not isinstance(value, int):
             raise TypeError('width must be an integer')
         if value < 0:
@@ -32,17 +27,12 @@ class Rectangle():
 
     @property
     def height(self):
-        """property to retrieve height of rectangle."""
+        """This property sets the height of the rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """
-        get height.
-
-        Args:
-            value.
-        """
+        """This property sets the height of the rectangle."""
         if not isinstance(value, int):
             raise TypeError('height must be an integer')
         if value < 0:
@@ -50,18 +40,18 @@ class Rectangle():
         self.__height = value
 
     def area(self):
-        """method returns area of rectangle."""
+        """This method returns the area of the rectangle."""
         return self.__height * self.__width
 
     def perimeter(self):
-        """method returns perimeter of rectangle"""
+        """This method returns the perimeter of the rectangle."""
         if self.__width == 0:
             if self.__height == 0:
                 return 0
         return ((self.__width + self.__height) * 2)
 
     def __str__(self):
-        """method to print the rectangle with the character #."""
+        """This method returns the string representation of the rectangle."""
         if self.__width == 0:
             if self.__height == 0:
                 return ('')
