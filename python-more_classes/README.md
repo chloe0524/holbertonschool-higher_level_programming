@@ -1,4 +1,4 @@
-# Python - More Classes and Objects
+# :snake: Python - More Classes and Objects
 ## 0. Simple rectangle
 Mandatory
 Write an empty class `Rectangle` that defines a rectangle:
