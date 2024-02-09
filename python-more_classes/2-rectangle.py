@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"module to make a Rectangle"
+"""
+module to make a Rectangle based
+class Rectangle that defines a rectangle
+"""
 
 
 class Rectangle():
@@ -62,5 +65,6 @@ class Rectangle():
     def perimeter(self):
         "method returns perimeter of rectangle"
         if self.__width or self.__height == 0:
-            return ((self.__width + self.__height) * 2)
+            return 0
+        return ((self.__width + self.__height) * 2)
     pass
