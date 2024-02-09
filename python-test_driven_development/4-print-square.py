@@ -11,7 +11,6 @@ def print_square(size):
     Args:
         size (int): The side length of the square (psitive integer).
     """
-
     if type(size) is not (int):
         raise TypeError("size must be an integer")
     elif size < 0:
