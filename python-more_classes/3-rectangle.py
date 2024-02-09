@@ -72,6 +72,7 @@ class Rectangle():
         return ((self.__width + self.__height) * 2)
 
     def __str__(self):
+        "method to print the rectangle with the character #"
         if self.__width == 0:
             if self.__height == 0:
                 return ('')
