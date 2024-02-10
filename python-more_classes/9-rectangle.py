@@ -94,7 +94,11 @@ class Rectangle():
 
     @classmethod
     def square(cls, size=0):
-        """method returns a new rectangle"""
+        """
+        method returns a new rectangle
+        Args:
+            cls (class): The class itself
+        """
         return cls(size, size)
 
     def __del__(self):
