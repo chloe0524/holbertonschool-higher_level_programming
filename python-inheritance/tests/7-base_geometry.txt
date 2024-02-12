@@ -1,22 +1,15 @@
-Testing the `BaseGeometry` class modules in Python
-==================================================
-
-doctest file for testing the `BaseGeometry` class.
+# doctest file for testing the `BaseGeometry` class.
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> base_geometry = BaseGeometry()
 
-Empty `area()`
---------------
-
+if Empty `area()`:
 >>> base_geometry.area()
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
 
-Empty or missing argument:
---------------------------
-
+if empty or missing argument:
 >>> base_geometry.integer_validator()
 Traceback (most recent call last):
 ...
@@ -27,22 +20,17 @@ Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-`None` value:
---------------
-
+if `None` value:
 >>> base_geometry.integer_validator("age", None)
 Traceback (most recent call last):
 ...
 TypeError: age must be an integer
 
-
-used with correct argument:
----------------------------------------------
+if used with correct argument:
 
 >>> base_geometry.integer_validator("age", 21)
 
-0 or negative value:
-
+if 0 or negative value:
 >>> base_geometry.integer_validator("age", 0)
 Traceback (most recent call last):
 ...
@@ -53,8 +41,7 @@ Traceback (most recent call last):
 ...
 ValueError: age must be greater than 0
 
-`base_geometry` module with non-integer value:
-----------------------------------------------
+if `base_geometry` module with non-integer value:
 
 >>> base_geometry.integer_validator("age", "21")
 Traceback (most recent call last):
