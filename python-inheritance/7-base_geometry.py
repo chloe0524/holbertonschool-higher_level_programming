@@ -14,18 +14,18 @@ class BaseGeometry():
         """
         def area(self):
 
-        """method raising exception"""
-            raise Exception("area() is not implemented")
+            """method raising exception"""
+        raise Exception("area() is not implemented")
 
         def integer_validator(self, name, value):
-        """
-        method checking type of args
+            """
+            method checking type of args
 
-        Args:
+            Args:
             name(str)
             value(int)
-        """
-            if type(value) is not (int):
-                raise TypeError("{} must be an integer".format(name))
-            elif value <= 0:
-                raise ValueError("{} must be greater than 0".format(name))
+            """
+        if type(value) is not (int):
+            raise TypeError("{} must be an integer".format(name))
+        elif value <= 0:
+            raise ValueError("{} must be greater than 0".format(name))
