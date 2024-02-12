@@ -1,6 +1,6 @@
 #doctest file for testing the `BaseGeometry` class modules
 
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 >>> base_geometry.integer_validator()
     Traceback (most recent call last):
