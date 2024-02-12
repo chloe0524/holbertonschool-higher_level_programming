@@ -1,12 +1,16 @@
 # doctest file for testing the `BaseGeometry` class modules
 
-# Test cases for integer_validator method
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> base_geometry = BaseGeometry()
+>>> base_geometry.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
->>> base_geometry.integer_validator("age", 10)
->>> base_geometry.integer_validator("height", 20)
+ >>> base_geometry.integer_validator("age")
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 >>> base_geometry.integer_validator("age", None)
 Traceback (most recent call last):
@@ -43,7 +47,7 @@ Traceback (most recent call last):
 ...
 TypeError: age must be an integer
 
->>> base_geometry.integer_validator("height", True)
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
+>>> base_geometry.integer_validator("age", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
