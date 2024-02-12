@@ -1,7 +1,8 @@
 Testing the `BaseGeometry` class modules in Python
 ==================================================
 
-doctest file for testing the `BaseGeometry` class
+This is a doctest file for testing the `BaseGeometry` class modules in Python.
+It provides examples and of how to use the function.
 
 Import file:
 ------------
@@ -11,19 +12,8 @@ Import file:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
     >>> base_geometry = BaseGeometry()
 
-if `None` value:
-----------------
-
-.. code-block:: python
-
-    >>> base_geometry.integer_validator("age", None)
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
-
-
-if `area()` empty:
-------------------
+Empty `area()` module:
+----------------------
 
 .. code-block:: python
 
@@ -32,8 +22,8 @@ if `area()` empty:
     ...
     Exception: area() is not implemented
 
-Empty or missing argument:
---------------------------
+Empty or missing argument `base_geometry` module:
+-------------------------------------------------
 
 .. code-block:: python
 
@@ -47,7 +37,7 @@ Empty or missing argument:
     ...
     TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-if `None` value:
+`base_geometry` module with `None` value:
 -----------------------------------------
 
 .. code-block:: python
@@ -57,8 +47,16 @@ if `None` value:
     ...
     TypeError: age must be an integer
 
-0 or negative value:
---------------------
+
+`base_geometry` module with reguler argument:
+---------------------------------------------
+
+.. code-block:: python
+
+    >>> base_geometry.integer_validator("age", 38)
+
+`base_geometry` module with 0 or negative value:
+------------------------------------------------
 
 .. code-block:: python
 
@@ -67,22 +65,32 @@ if `None` value:
     ...
     ValueError: age must be greater than 0
 
-    >>> base_geometry.integer_validator("age", -21)
+    >>> base_geometry.integer_validator("age", -38)
     Traceback (most recent call last):
     ...
     ValueError: age must be greater than 0
 
-non-integer value:
-------------------
+`base_geometry` module with non-integer value:
+----------------------------------------------
 
 .. code-block:: python
 
-    >>> base_geometry.integer_validator("age", (21, 38))
+    >>> base_geometry.integer_validator("age", "38")
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-    >>> base_geometry.integer_validator("age", {21, 38})
+    >>> base_geometry.integer_validator("age", [38])
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> base_geometry.integer_validator("age", (38, 40))
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> base_geometry.integer_validator("age", {38, 40})
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
@@ -91,10 +99,3 @@ non-integer value:
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
-
-used properly with correct argument:
----------------------------------------------
-
-.. code-block:: python
-
-    >>> base_geometry.integer_validator("age", 21)
