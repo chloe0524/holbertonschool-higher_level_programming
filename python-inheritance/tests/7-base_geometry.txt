@@ -1,49 +1,100 @@
-# doctest file for testing the `BaseGeometry` class modules
+Testing the `BaseGeometry` class modules in Python
+==================================================
 
-# Test cases for integer_validator method
+"""doctest file for testing the `BaseGeometry` class"""
 
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> base_geometry = BaseGeometry()
+Import file:
+------------
 
->>> base_geometry.integer_validator("age", 10)
->>> base_geometry.integer_validator("height", 20)
+.. code-block:: python
 
->>> base_geometry.integer_validator("age", None)
-Traceback (most recent call last):
-...
-TypeError: age must be an integer
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> base_geometry = BaseGeometry()
 
->>> base_geometry.integer_validator("height", "string")
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
+if `None` value:
+----------------
 
->>> base_geometry.integer_validator("age", 0)
-Traceback (most recent call last):
-...
-ValueError: age must be greater than 0
+.. code-block:: python
 
->>> base_geometry.integer_validator("height", -5)
-Traceback (most recent call last):
-...
-ValueError: height must be greater than 0
+    >>> base_geometry.integer_validator("age", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
 
->>> base_geometry.integer_validator("age", 10.5)
-Traceback (most recent call last):
-...
-TypeError: age must be an integer
 
->>> base_geometry.integer_validator("height", [10, 20])
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
+if `area()` empty:
+------------------
 
->>> base_geometry.integer_validator("age", {10, 20})
-Traceback (most recent call last):
-...
-TypeError: age must be an integer
+.. code-block:: python
 
->>> base_geometry.integer_validator("height", True)
-Traceback (most recent call last):
-...
-TypeError: height must be an integer
+    >>> base_geometry.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+Empty or missing argument:
+--------------------------
+
+.. code-block:: python
+
+    >>> base_geometry.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    >>> base_geometry.integer_validator("age")
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+if `None` value:
+-----------------------------------------
+
+.. code-block:: python
+
+    >>> base_geometry.integer_validator("age", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+0 or negative value:
+--------------------
+
+.. code-block:: python
+
+    >>> base_geometry.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+    >>> base_geometry.integer_validator("age", -21)
+    Traceback (most recent call last):
+    ...
+    ValueError: age must be greater than 0
+
+non-integer value:
+------------------
+
+.. code-block:: python
+
+    >>> base_geometry.integer_validator("age", (21, 38))
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> base_geometry.integer_validator("age", {21, 38})
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> base_geometry.integer_validator("age", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+used properly with correct argument:
+---------------------------------------------
+
+.. code-block:: python
+
+    >>> base_geometry.integer_validator("age", 21)
