@@ -1,8 +1,7 @@
 Testing the `BaseGeometry` class modules in Python
 ==================================================
 
-This is a doctest file for testing the `BaseGeometry` class modules in Python.
-It provides examples and of how to use the function.
+doctest file for testing the `BaseGeometry` class.
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> base_geometry = BaseGeometry()
