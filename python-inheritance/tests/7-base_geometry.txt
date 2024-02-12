@@ -1,7 +1,7 @@
 Testing the `BaseGeometry` class modules in Python
 ==================================================
 
-"""doctest file for testing the `BaseGeometry` class"""
+doctest file for testing the `BaseGeometry` class
 
 Import file:
 ------------
