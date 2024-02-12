@@ -1,58 +1,49 @@
-#doctest file for testing the `BaseGeometry` class modules
+# doctest file for testing the `BaseGeometry` class modules
 
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+# Test cases for integer_validator method
 
->>> base_geometry.integer_validator()
-    Traceback (most recent call last):
-    ...
-    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> base_geometry = BaseGeometry()
 
- >>> base_geometry.integer_validator("age")
-    Traceback (most recent call last):
-    ...
-    TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> base_geometry.integer_validator("age", 10)
+>>> base_geometry.integer_validator("height", 20)
 
 >>> base_geometry.integer_validator("age", None)
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
 
->>> base_geometry.integer_validator(None, value)
-    Traceback (most recent call last):
-    ...
-    TypeError: value must be an integer
-
->>> base_geometry.integer_validator(38, age)
-    Traceback (most recent call last):
-    ...
-    NameError: name 'age' is not defined
+>>> base_geometry.integer_validator("height", "string")
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
 
 >>> base_geometry.integer_validator("age", 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
 
->>> base_geometry.integer_validator("age", -38)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
+>>> base_geometry.integer_validator("height", -5)
+Traceback (most recent call last):
+...
+ValueError: height must be greater than 0
 
->>> base_geometry.integer_validator("age", (38, ))
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("age", 10.5)
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
 
->>> base_geometry.integer_validator("age", [38])
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("height", [10, 20])
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
 
->>> base_geometry.integer_validator("age", {38, 39, 40})
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("age", {10, 20})
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
 
->>> base_geometry.integer_validator("age", True)
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("height", True)
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
