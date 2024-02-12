@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""function returns list of available attributes and methods of an object"""
+"""
+modules define a function that returns list of available
+attributes and methods of an object
+"""
 
 
 def lookup(obj):
@@ -8,5 +11,8 @@ def lookup(obj):
 
     Args:
         obj: object to return
+
+    Returns:
+        list object
     """
     return dir(obj)
