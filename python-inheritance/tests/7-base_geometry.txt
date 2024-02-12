@@ -11,28 +11,45 @@ Empty `area()`
 --------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 >>> base_geometry.area()
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
+<<<<<<< HEAD
 =======
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
     >>> base_geometry = BaseGeometry()
+=======
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 
-Empty `area()` module:
-----------------------
+Empty or missing argument:
+--------------------------
 
-.. code-block:: python
+>>> base_geometry.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
+<<<<<<< HEAD
     >>> base_geometry.area()
     Traceback (most recent call last):
     ...
     Exception: area() is not implemented
 >>>>>>> 1a268a1b7012e7aabda3460de4669b6e33bcaea6
+=======
+>>> base_geometry.integer_validator("age")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 
-Empty or missing argument `base_geometry` module:
--------------------------------------------------
+`None` value:
+--------------
 
+<<<<<<< HEAD
 >>> base_geometry.integer_validator()
 Traceback (most recent call last):
 ...
@@ -47,10 +64,13 @@ TypeError: integer_validator() missing 1 required positional argument: 'value'
 --------------
 
 <<<<<<< HEAD
+=======
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 >>> base_geometry.integer_validator("age", None)
 Traceback (most recent call last):
 ...
 TypeError: age must be an integer
+<<<<<<< HEAD
 =======
 `base_geometry` module with `None` value:
 -----------------------------------------
@@ -79,18 +99,23 @@ ValueError: age must be greater than 0
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
+=======
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 
 
-`base_geometry` module with reguler argument:
+used with correct argument:
 ---------------------------------------------
 
-.. code-block:: python
+>>> base_geometry.integer_validator("age", 21)
 
-    >>> base_geometry.integer_validator("age", 38)
+0 or negative value:
 
-`base_geometry` module with 0 or negative value:
-------------------------------------------------
+>>> base_geometry.integer_validator("age", 0)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
 
+<<<<<<< HEAD
 .. code-block:: python
 
     >>> base_geometry.integer_validator("age", 0)
@@ -103,15 +128,25 @@ ValueError: age must be greater than 0
     ...
     ValueError: age must be greater than 0
 >>>>>>> 1a268a1b7012e7aabda3460de4669b6e33bcaea6
+=======
+>>> base_geometry.integer_validator("age", -21)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 
 `base_geometry` module with non-integer value:
 ----------------------------------------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 >>> base_geometry.integer_validator("age", "21")
 Traceback (most recent call last):
 ...
 TypeError: age must be an integer
+<<<<<<< HEAD
 
 >>> base_geometry.integer_validator("age", [21])
 Traceback (most recent call last):
@@ -134,22 +169,25 @@ Traceback (most recent call last):
 TypeError: age must be an integer
 =======
 .. code-block:: python
+=======
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
 
-    >>> base_geometry.integer_validator("age", "38")
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("age", [21])
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
 
-    >>> base_geometry.integer_validator("age", [38])
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("age", (21, 40))
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
 
-    >>> base_geometry.integer_validator("age", (38, 40))
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+>>> base_geometry.integer_validator("age", {21, 40})
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
 
+<<<<<<< HEAD
     >>> base_geometry.integer_validator("age", {38, 40})
     Traceback (most recent call last):
     ...
@@ -160,3 +198,9 @@ TypeError: age must be an integer
     ...
     TypeError: age must be an integer
 >>>>>>> 1a268a1b7012e7aabda3460de4669b6e33bcaea6
+=======
+>>> base_geometry.integer_validator("age", True)
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
+>>>>>>> d64a8008ce282ce986b4f7d2b438fd59cffcf258
