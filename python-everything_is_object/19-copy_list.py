@@ -1,6 +1,3 @@
-#!usr/bin/python3
-"""module to copy list"""
-
-
+#!/usr/bin/python3
 def copy_list(a_list):
     return a_list[:]
