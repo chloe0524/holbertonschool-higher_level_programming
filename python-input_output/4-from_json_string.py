@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 import json
-"""
-module with function to return object
-from json string.
-"""
+"""function to return object from json string"""
 
 
 def from_json_string(my_str):
