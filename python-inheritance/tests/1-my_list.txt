@@ -7,6 +7,15 @@ Using 'Sort'
 >>> MyList = __import__('1-my_list').MyList
 
 >>> my_list = MyList()
+>>> my_list.append(7)
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> my_list.print_sorted()
+[1, 2, 7]
+>>> my_list
+[7, 1, 2]
+
+>>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
 >>> my_list.append(2)
@@ -42,3 +51,14 @@ TypeError: list expected at most 1 argument, got 2
 Traceback (most recent call last):
     ...
 NameError: name 'list_no_exist' is not defined
+
+>>> my_list = MyList()
+
+>>> my_list = MyList()
+>>> my_list += [3]
+>>> my_list.print_sorted()
+[3]
+
+>>> my_list = MyList()
+>>> isinstance(my_list, list)
+True
