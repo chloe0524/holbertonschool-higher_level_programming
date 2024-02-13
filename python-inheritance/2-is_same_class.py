@@ -1,14 +1,21 @@
-#!usr/bin/python3
-"""module to check 'list' type"""
+#!/usr/bin/python3
+
+"""
+MODULE WITH FUNCTION TO CHECK IF OBJECT IS INSTANCE OF CLASS
+"""
 
 
 def is_same_class(obj, a_class):
 
     """
-    check_if_its_same_class
-    
-    Args:
-        obj: its an object
-        a_classe: its a class
+    CHECKS IF OBJECT IS INSTANCE OF SPECIFIED CLASS
+
+    ARGS:
+        OBJ: THE OBJECT TO CHECK THE CLASS OF
+        A_CLASS: THE CLASS TO COMPARE THE OBJECT'S TYPE TO
+
+    RETURNS:
+        `TRUE` IF OBJECT IS AN EXACT INSTANCE OF THE SPECIFIED CLASS,
+        `FALSE` OTHERWISE.
     """
     return (type(obj) is a_class)
