@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """module withfunction for read+print file contents"""
 
-import json
-
 
 class Student:
     """A class for student infos"""
