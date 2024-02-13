@@ -50,4 +50,4 @@ def inherits_from(obj, a_class):
         `TRUE` IF OBJECT IS AN EXACT INSTANCE OF THE SPECIFIED CLASS,
         `FALSE` OTHERWISE.
     """
-    return (isinstance(obj, a_class), type(obj) is a_class)
+    return (isinstance(obj, a_class) and type(obj) is not a_class)
