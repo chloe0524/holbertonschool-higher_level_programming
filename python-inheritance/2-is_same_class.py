@@ -5,9 +5,10 @@
 def is_same_class(obj, a_class):
 
     """
-    CHECK IF ITS SAME CLASS
-    ARGS:
-        OBJ: ITS AN OBJECT
-        A_CLASSE: ITS A CLASS
+    check_if_its_same_class
+    
+    Args:
+        obj: its an object
+        a_classe: its a class
     """
     return (type(obj) is a_class)
