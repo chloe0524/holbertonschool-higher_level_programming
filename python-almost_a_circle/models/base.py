@@ -46,6 +46,15 @@ class Base():
             return json.loads(json_string)
 
     @classmethod
+    def create(cls, **dictionary):
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(2)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
     def load_from_file(cls):
         """Load objects from a JSON file and return a list of objects."""
         file_name = cls.__name__ + ".json"
