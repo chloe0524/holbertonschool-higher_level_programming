@@ -24,16 +24,16 @@ class Base():
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """adding the class method json save_to_file"""
+        """list of objects to a JSON file"""
         if list_objs is None:
-            return []
-        new_dict = []
+            list_objs = []
+        new_dictionary = []
 
         for object in list_objs:
-            new_dict.append(object.to_dictionary())
+            new_dictionary.append(object.to_dictionary())
 
-        jstring = cls.to_json_string(new_dict)
+        json_string = cls.to_json_string(new_dictionary)
         filename = cls.__name__ + ".json"
 
-        with open(filename, "w", encoding="utf-8") as f:
-            return (f.write(jstring))
+        with open(filename, "w", encoding="utf-8") as file:
+            return (file.write(json_string))
