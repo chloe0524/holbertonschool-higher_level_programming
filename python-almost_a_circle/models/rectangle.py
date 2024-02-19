@@ -141,6 +141,7 @@ class Rectangle(Base):
     def to_dictionary(self):
         """convert square instance into dictionary"""
         return {"id": self.id,
-                "size": self.size,
+                "width": self.width,
+                "height": self.height,
                 "x": self.x,
                 "y": self.y}
