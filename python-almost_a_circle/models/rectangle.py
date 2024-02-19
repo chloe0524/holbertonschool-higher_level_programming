@@ -105,4 +105,4 @@ class Rectangle(Base):
     def __str__(self):
         """method to print the rectangle with the character #."""
         return ("[Rectangle] ({}) {}/{} - {}/{}"
-                .format(self.id, self.x, self.y, self.height, self.width))
+                .format(self.id, self.x, self.y, self.width, self.height))
