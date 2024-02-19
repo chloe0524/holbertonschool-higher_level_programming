@@ -37,3 +37,10 @@ class Base():
 
         with open(filename, "w", encoding="utf-8") as file:
             return (file.write(json_string))
+
+    def from_json_string(json_string):
+        """ returns the list of the json string rep"""
+        if json_string is None:
+            return []
+        else:
+            return json.loads(json_string)
