@@ -101,3 +101,8 @@ class Rectangle(Base):
         """display the circle that isn't a circle"""
         for not_a_cercle_at_all in range(self.__height):
             print('#' * self.__width)
+
+    def __str__(self):
+        """method to print the rectangle with the character #."""
+        return ("[Rectangle] ({}) {}/{} - {}/{}"
+                .format(self.id, self.x, self.y, self.height, self.width))
