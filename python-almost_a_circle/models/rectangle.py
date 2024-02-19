@@ -137,3 +137,10 @@ class Rectangle(Base):
                     self.__x = value
                 if key == "y":
                     self.__y = value
+
+    def to_dictionary(self):
+        """convert square instance into dictionary"""
+        return {"id": self.id,
+                "size": self.size,
+                "x": self.x,
+                "y": self.y}
