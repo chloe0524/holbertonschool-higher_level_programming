@@ -94,9 +94,10 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """method returns area of rectangle."""
+        """method returns area of rectangle"""
         return self.__height * self.__width
 
     def display(self):
+        """display the circle that isn't a circle"""
         for not_a_cercle_at_all in range(self.__height):
             print('#' * self.__width)
