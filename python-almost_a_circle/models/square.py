@@ -3,6 +3,7 @@
 
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
     """A class Square that inherits from Rectangle"""
     def __init__(self, size, x=0, y=0, id=None):
@@ -25,8 +26,6 @@ class Square(Rectangle):
         return ("[Square] ({}) {}/{} - {}"
                 .format(self.id, self.x, self.y, self.size))
 
-    def update(self, *args, **kwargs):
-        """args or kwargs who knows"""
         if args:
             if len(args) >= 1:
                 self.id = args[0]
