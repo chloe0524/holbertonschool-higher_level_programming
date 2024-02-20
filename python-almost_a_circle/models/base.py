@@ -67,7 +67,7 @@ class Base():
                     list_dicts = cls.from_json_string(data)
                     for obj_dict in list_dicts:
                         objects.append(cls.create(**obj_dict))
-        finally:
+        except FileNotFoundError:
             pass
 
         return objects
