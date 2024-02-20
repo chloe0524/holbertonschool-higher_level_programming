@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-'''Module for Rectangle unit_tests.'''
+'''Module for Rectangle unit_os
+tests.'''
 import unittest
 import json
+import os
 
 from io import StringIO
 from models.base import Base
