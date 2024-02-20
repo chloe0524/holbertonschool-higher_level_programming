@@ -66,7 +66,7 @@ class Base():
                 if data:
                     list_dicts = cls.from_json_string(data)
                     for obj_dict in list_dicts:
-                        objects.append(cls(**obj_dict))
+                        objects.append(cls.create(**obj_dict))
         finally:
             pass
 
