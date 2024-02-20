@@ -2,8 +2,6 @@
 '''Module for Rectangle unit tests.'''
 import unittest
 import json
-import sys
-import os
 
 from io import StringIO
 from models.base import Base
