@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Module for Rectangle unit tests.'''
+'''Module for Rectangle unit_tests.'''
 import unittest
 import json
 
