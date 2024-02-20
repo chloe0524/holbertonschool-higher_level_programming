@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """A class Base."""
-import turtle
 import json
 import os
 
