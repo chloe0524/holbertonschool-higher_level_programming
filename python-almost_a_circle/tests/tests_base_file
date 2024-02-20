@@ -33,6 +33,12 @@ class TestBase(unittest.TestCase):
 
         self.assertEqual(b.id, 89)
 
+    def test_automatic_id(self):
+    """Test automatic assignment of id."""
+        base1 = Base()
+        base2 = Base()
+        self.assertEqual(base1.id + 1, base2.id)
+
     def test_to_json_string_none(self):
         """Args is None"""
         json_dictionary = Base.to_json_string(None)
@@ -138,6 +144,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(s1.size, 1)
         self.assertEqual(s1.x, 2)
         self.assertEqual(s1.y, 3)
+
 
 if __name__ == "__main__":
     unittest.main()
