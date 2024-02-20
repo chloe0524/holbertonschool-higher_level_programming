@@ -26,6 +26,8 @@ class Square(Rectangle):
         return ("[Square] ({}) {}/{} - {}"
                 .format(self.id, self.x, self.y, self.size))
 
+    def update(self, *args, **kwargs):
+        """args or kwargs who knows"""
         if args:
             if len(args) >= 1:
                 self.id = args[0]
