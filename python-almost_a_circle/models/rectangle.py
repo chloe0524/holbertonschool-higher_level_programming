@@ -3,6 +3,7 @@
 
 from models.base import Base
 
+
 class Rectangle(Base):
     """class to make rectangle"""
 
