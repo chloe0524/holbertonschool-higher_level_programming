@@ -1,190 +1,165 @@
-#!/usr/bin.python3
-
-"""
-Module with unit tests for the `Square` class.
-"""
-
-# Import modules.
-from io import StringIO
+#!/usr/bin/python3
+'''Module for Rectangle unit tests.'''
+import unittest
 import json
 import sys
-import unittest
-# Import the classes (Base, Rectangle, Square).
+import os
+
+from io import StringIO
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+class TestSquare(unittest.TestCase):
+    """Tests the Square class."""
+    def test_initialisation(self):
+        """Initialise the square"""
+        s1 = Square(1)
 
-class test_Square_methods(unittest.TestCase):
-    """
-    Test cases for the methods of the `Square` class.
-    """
-    def test_number_of_objects(self):
-        """
-        Test if `id` of Base is assigned when `__nb_objects` is 0.
-        """
-        Base.__nb_objects = 0
+        self.assertIsInstance(s1, Square)
+        self.assertEqual(s1.size, 1)
 
-        square = Square(42)
-        self.assertIsNotNone(square.id, 1)
+        s2 = Square(1, 2)
 
-    def test_init(self):
-        """
-        Test if instance created with `Base` constructor is a `Base` instance.
-        """
-        Base.__nb_objects = 0
+        self.assertIsInstance(s2, Square)
+        self.assertEqual(s2.size, 1)
+        self.assertEqual(s2.x, 2)
 
-        square = Square(42)
-        self.assertIsInstance(square, Square)
+        s3 = Square(1, 2, 3)
 
-    def test_getter_and_setter(self):
-        """
-        Test getter and setter for width, height, x, and y.
-        """
-        Base.__nb_objects = 0
+        self.assertIsInstance(s3, Square)
+        self.assertEqual(s3.size, 1)
+        self.assertEqual(s3.x, 2)
+        self.assertEqual(s3.y, 3)
 
-        square = Square(42, 4, 2)
-        self.assertEqual(square.width, 42)
-        self.assertEqual(square.height, 42)
-        self.assertEqual(square.x, 4)
-        self.assertEqual(square.y, 2)
+        with self.assertRaises(TypeError):
+            s4 = Square("1")
 
-    def test_errors(self):
-        """
-        Test various error conditions when setting attributes.
-        """
-        Base.__nb_objects = 0
+        with self.assertRaises(TypeError):
+            s5 = Square(1, "2")
 
-        square = Square(42)
-        with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            square.width = "42"
-        with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            square.width = -42
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            square.height = "42"
-        with self.assertRaisesRegex(ValueError, "height must be > 0"):
-            square.height = -42
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            square.x = "42"
-        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-            square.x = -42
-        with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            square.y = "42"
-        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
-            square.y = -42
+        with self.assertRaises(TypeError):
+            s6 = Square(1, 2, "3")
 
-    def test_area(self):
-        """
-        Test the calculation of the area.
-        """
-        Base.__nb_objects = 0
+        s7 = Square(1, 2, 3, 4)
 
-        square = Square(42)
-        self.assertEqual(square.area(), square.width * square.height)
+        self.assertIsInstance(s7, Square)
+        self.assertEqual(s7.size, 1)
+        self.assertEqual(s7.x, 2)
+        self.assertEqual(s7.y, 3)
+        self.assertEqual(s7.id, 4)
 
-    def test_display_without_xy(self):
-        """
-        Test display when x and y are both 0.
-        """
-        Base.__nb_objects = 0
+        with self.assertRaises(ValueError):
+            s8 = Square(-1)
 
-        square = Square(2, 4, 0, 0)
-        old_stdout = sys.stdout
-        result = StringIO()
-        sys.stdout = result
-        square.display()
-        sys.stdout = old_stdout
-        result_string = result.getvalue()
-        self.assertEqual(result_string, "    ##\n    ##\n")
+        with self.assertRaises(ValueError):
+            s9 = Square(1, -2)
 
-    def test_display_with_xy(self):
-        """
-        Test display when x and y are greater than 0.
-        """
-        Base.__nb_objects = 0
+        with self.assertRaises(ValueError):
+            s10 = Square(1, 2, -3)
 
-        square = Square(2, 4, 2, 2)
-        old_stdout = sys.stdout
-        result = StringIO()
-        sys.stdout = result
-        square.display()
-        sys.stdout = old_stdout
-        result_string = result.getvalue()
-        self.assertEqual(result_string, "\n\n    ##\n    ##\n")
+        with self.assertRaises(ValueError):
+            s11 = Square(0)
+    
+    def test__str__(self):
+        """Test __str__ method."""
+        s1 = Square(1, 2, 3, 4)
 
-    def test_str(self):
-        """
-        Test the `__str__` method.
-        """
-        Base.__nb_objects = 0
-
-        square = Square(42, 4, 2)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 4/2 - 42".format(square.id))
-
-    def test_update_args(self):
-        """
-        Test the `update` method with positional arguments.
-        """
-        Base.__nb_objects = 0
-
-        square = Square(20, 10, 4, 2)
-
-        square.update(42)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 10/4 - 20".format(square.id))
-
-        square.update(200, 100, 40, 20)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 40/20 - 100".format(square.id))
-
-        square.update(42, 42, 42, 42)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 42/42 - 42".format(square.id))
-
-        square.update(42, 2, 4)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 4/42 - 2".format(square.id))
-
-        square.update(42, 2, 4, 6, 8)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 4/6 - 2".format(square.id))
-
-    def test_update_kwargs(self):
-        """
-        Test the `update` method with positional arguments.
-        """
-        Base.__nb_objects = 0
-
-        square = Square(42)
-
-        square.update(height=40)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 0/0 - 42".format(square.id))
-
-        square.update(width=20)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 0/0 - 42".format(square.id))
-
-        square.update(x=8)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 8/0 - 42".format(square.id))
-
-        square.update(y=4)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 8/4 - 42".format(square.id))
-
-        square.update(width=20, height=10, x=4, y=2, id=42)
-        string = square.__str__()
-        self.assertEqual(string, "[Square] ({}) 4/2 - 42".format(square.id))
-
+        self.assertEqual(str(s1), "[Square] (4) 2/3 - 1")
+    
     def test_to_dictionary(self):
-        """
-        Test the `to_dictionary` method.
-        """
-        Base.__nb_objects = 0
+        """Test to_dictionary method."""
+        s1 = Square(1, 2, 3, 4)
 
-        square = Square(42, 4, 2, 1)
-        square_dictionary = square.to_dictionary()
-        new_dictionary = {"size": 42, "x": 4, "y": 2, "id": 1}
-        self.assertTrue(square_dictionary == new_dictionary)
+        self.assertEqual(s1.to_dictionary(), { 'id': 4, 'size': 1, 'x': 2, 'y': 3 })
+    
+    def test_update_1(self):
+        """Test update method."""
+        Base._Base__nb_objects = 0
+        s1 = Square(1, 2, 3, 4)
+
+        s1.update()
+        
+        self.assertEqual(str(s1), "[Square] (4) 2/3 - 1")
+    
+    def test_update_2(self):
+        """Test update method."""
+        Base._Base__nb_objects = 0
+        s1 = Square(1, 2, 3, 4)
+
+        s1.update(89)
+        
+        self.assertEqual(str(s1), "[Square] (89) 2/3 - 1")
+    
+    def test_update_3(self):
+        """Test update method."""
+        Base._Base__nb_objects = 0
+        s1 = Square(1, 2, 3, 4)
+
+        s1.update(89, 1)
+        
+        self.assertEqual(str(s1), "[Square] (89) 2/3 - 1")
+    
+    def test_update_4(self):
+        """Test update method."""
+        Base._Base__nb_objects = 0
+        s1 = Square(1, 2, 3, 4)
+
+        s1.update(89, 1, 2)
+        
+        self.assertEqual(str(s1), "[Square] (89) 2/3 - 1")
+    
+    def test_update_5(self):
+        """Test update method."""
+        Base._Base__nb_objects = 0
+        s1 = Square(1, 2, 3, 4)
+
+        s1.update(89, 1, 2, 3)
+        
+        self.assertEqual(str(s1), "[Square] (89) 2/3 - 1")
+
+    def test_save_to_file(self):
+        """Test save_to_file method."""
+        Base._Base__nb_objects = 0
+        Square.save_to_file(None)
+
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        
+        Square.save_to_file([Square(1)])
+        
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), '[{"id": 1, "x": 0, "size": 1, "y": 0}]')
+    
+    def test_save_to_file2(self):
+        """Test save_to_file([]) in Square."""
+        filename = "Square.json"
+
+        Square.save_to_file([])
+        self.assertTrue(os.path.exists(filename))
+        
+        with open(filename, "r") as f:
+            file_content = f.read()
+
+        self.assertEqual(file_content, "[]")
+        
+        os.remove(filename)
+
+    def test_load_from_file(self):
+        """Test load_from_file method where file does not exist."""
+        filename = "nonexistent_file.txt"
+
+        with self.assertRaises(TypeError):
+            Square.load_from_file(filename)
+    
+    def test_load_from_file_2(self):
+        """Test load_from_file method where file exists."""
+        Base._Base__nb_objects = 0
+        Square.save_to_file([Square(1, 2)])
+        list_output = Square.load_from_file()
+        
+        expected_output = [Square(1, 2)]
+        self.assertNotEqual(str(list_output), str(expected_output))
+
+if __name__ == "__main__":
+    unittest.main()

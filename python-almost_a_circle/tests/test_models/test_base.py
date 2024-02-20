@@ -1,138 +1,143 @@
-#!/usr/bin.python3
-
-"""
-Module with unit tests for the `Base` class.
-"""
-
-# Import modules.
-import json
+#!/usr/bin/python3
+'''Module for Base unit tests.'''
 import unittest
-# Import the classes (Base, Rectangle, Square).
+import json
+import sys
+import os
+
+
+from io import StringIO
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
 
-class test_Base_methods(unittest.TestCase):
-    """
-    Test cases for the methods of the `Base` class.
-    """
-    def test_number_of_objects(self):
-        """
-        Test if `id` of Base is assigned when `__nb_objects` is 0.
-        """
-        Base.__nb_objects = 0
+class TestBase(unittest.TestCase):
+    '''Tests the Base class.'''
+    def test_initialisation(self):
+        """Tests Base() instantiation."""
+        b = Base()
 
-        base = Base()
-        self.assertIsNotNone(base.id, 1)
+        self.assertGreater(b.id, 0)
 
-    def test_init(self):
-        """
-        Test if instance created with `Base` constructor is a `Base` instance.
-        """
-        Base.__nb_objects = 0
+    def test_incrementation(self):
+        """Test Base() incrementation"""
+        a = Base()
+        b = Base()
 
-        base = Base()
-        self.assertIsInstance(base, Base)
+        self.assertEqual(b.id, a.id + 1)
 
-    def test_init_with_id(self):
-        """
-        Test if `id` is correctly assigned when a specific `id` is provided.
-        """
-        Base.__nb_objects = 0
+    def test_saving_id(self):
+        """Test Base(89)"""
+        b = Base(89)
 
-        base = Base(42)
-        self.assertEqual(base.id, 42)
+        self.assertEqual(b.id, 89)
 
-    def test_init_without_id(self):
-        """
-        Test if `id` is assigned when no `id` is provided.
-        """
-        Base.__nb_objects = 0
+    def test_to_json_string_none(self):
+        """Args is None"""
+        json_dictionary = Base.to_json_string(None)
 
-        base = Base()
-        self.assertIsNotNone(id(base))
+        self.assertTrue(json_dictionary, "null")
 
-    def test_to_json_string(self):
-        """
-        Test if to_json_string correctly converts
-        a list of dictionaries to JSON.
-        """
-        Base.__nb_objects = 0
+    def test_to_json_string_empty_list(self):
+        """Empty list"""
+        json_dictionary = Base.to_json_string([])
 
-        rectangle = Rectangle(20, 10, 4, 2)
-        square = Square(20, 10, 4, 2)
-        dictionary = [rectangle.to_dictionary(), square.to_dictionary()]
-        json_string = json.dumps([dictionary])
-        json_list_of_dictionary = rectangle.to_json_string([dictionary])
-        self.assertTrue(json_string == json_list_of_dictionary)
+        self.assertTrue(json_dictionary, [])
 
-    def test_save_to_file(self):
-        """
-        Test if save_to_file correctly saves a list of objects to a JSON file.
-        """
-        Base.__nb_objects = 0
+    def test_to_json_string_id(self):
+        """List contains [ { 'id': 12 }]"""
+        input_data = [ { 'id': 12 }]
+        expected_output = json.dumps(input_data)
+        json_dictionary = Base.to_json_string(input_data)
 
-        rectangle = Rectangle(20, 10, 4, 2)
-        square = Square(20, 10, 4, 2)
-        dictionary = [rectangle.to_dictionary(), square.to_dictionary()]
-        Rectangle.save_to_file([rectangle, square])
-        with open("Rectangle.json", "r") as file:
-            json_list_of_dictionary = json.loads(file.read())
-        self.assertTrue(dictionary == json_list_of_dictionary)
+        self.assertTrue(json_dictionary, [ { 'id': 12 }])
+        self.assertEqual(json_dictionary, expected_output)
 
-    def test_from_fson_string(self):
-        """
-        Test if from_json_string correctly converts
-        a JSON string to a list of dictionaries.
-        """
-        Base.__nb_objects = 0
+    def test_from_json_string_none(self):
+        """Args is None"""
+        list_output = Base.from_json_string(None)
 
-        list_input = [{"id": 42, "width": 20, "height": 10}]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(json_list_input)
-        self.assertTrue(list_input == list_output)
+        self.assertEqual(list_output, [])
 
-    def test_create(self):
-        """
-        Test if create correctly creates an instance
-        from a dictionary of attributes.
-        """
-        Base.__nb_objects = 0
+    def test_from_json_string_empty_list(self):
+        """Test for "[]"."""
+        list_output = Base.from_json_string("[]")
 
-        rectangle = Rectangle(2, 4, 6, 8)
-        list_rectangles_inout = rectangle.to_dictionary()
-        new_rectangle = Rectangle.create(**list_rectangles_inout)
-        self.assertFalse(rectangle is new_rectangle)
-        self.assertFalse(rectangle == new_rectangle)
+        self.assertEqual(list_output, [])
 
-    def test_load_from_file(self):
-        """
-        Test if load_from_file correctly loads objects
-        from a JSON file and creates instances.
-        """
-        Base.__nb_objects = 0
+    def test_from_json_string_id(self):
+        """List contains [ { 'id': 89 }]"""
+        input_data = '[ { "id": 89 }]'
+        expected_output = [ { 'id': 89 }]
+        json_dictionary = Base.from_json_string(input_data)
 
-        # Test with rectangles
-        rectangle_1 = Rectangle(2, 4, 6, 8)
-        rectangle_2 = Rectangle(8, 6, 4, 2)
-        list_rectangles_input = [rectangle_1, rectangle_2]
-        Rectangle.save_to_file(list_rectangles_input)
-        list_rectangles_output = Rectangle.load_from_file()
-        self.assertTrue(type(list_rectangles_output) is list)
-        for rectangle in list_rectangles_input:
-            self.assertTrue(isinstance(rectangle, Rectangle))
-        for rect in list_rectangles_output:
-            self.assertTrue(isinstance(rectangle, Rectangle))
+        self.assertEqual(json_dictionary, expected_output)
+        self.assertIsInstance(json_dictionary, list)
+    
+    def test_create_1(self):
+        """Test create with a dict : **{ 'id': 89 }"""
+        r1 = Rectangle.create(**{ 'id': 89 })
 
-        # Test with squares
-        square_1 = Square(2, 4, 6, 8)
-        square_2 = Square(8, 6, 4, 2)
-        list_squares_input = [square_1, square_2]
-        Square.save_to_file(list_squares_input)
-        list_squares_output = Square.load_from_file()
-        self.assertTrue(type(list_squares_output) is list)
-        for square in list_squares_input:
-            self.assertTrue(isinstance(square, Square))
-        for sqr in list_squares_output:
-            self.assertTrue(isinstance(square, Square))
+        self.assertEqual(r1.id, 89)
+    
+    def test_create_2(self):
+        """Test create with a dict : **{ 'id': 89, 'width': 1 }"""
+        r1 = Rectangle.create(**{ 'id': 89, 'width': 1 })
+
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+    
+    def test_create_3(self):
+        """Test create with a dict : **{ 'id': 89, 'width': 1, 'height': 2 }"""
+        r1 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2 })
+
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+
+    def test_create_4(self):
+        """Test create with a dict : **{ 'id': 89, 'width': 1, 'height': 2, 'x': 3 }"""
+        r1 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3 })
+
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 3)
+    
+    def test_create_5(self):
+        """Test create with a dict : **{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 }"""
+        r1 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
+
+        self.assertEqual(r1.id, 89)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 3)
+        self.assertEqual(r1.y, 4)
+    
+    def test_create_6(self):
+        """Test create with a dict : **{ 'id': 89, 'size': 1 }"""
+        s1 = Square.create(**{ 'id': 89, 'size': 1 })
+
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 1)
+    
+    def test_create_7(self):
+        """Test create with a dict : **{ 'id': 89, 'size': 1, 'x': 2 }"""
+        s1 = Square.create(**{ 'id': 89, 'size': 1, 'x': 2 })
+
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 1)
+        self.assertEqual(s1.x, 2)
+        
+    def test_create_8(self):
+        """Test create with a dict : **{ 'id': 89, 'size': 1, 'x': 2, 'y': 3 }"""
+        s1 = Square.create(**{ 'id': 89, 'size': 1, 'x': 2, 'y': 3 })
+
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 1)
+        self.assertEqual(s1.x, 2)
+        self.assertEqual(s1.y, 3)
+
+if __name__ == "__main__":
+    unittest.main()
