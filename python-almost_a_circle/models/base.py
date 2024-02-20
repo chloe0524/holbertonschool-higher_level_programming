@@ -56,11 +56,18 @@ class Base():
 
     @classmethod
     def load_from_file(cls):
-        """Function that creates an Object from a JSON file"""
-        filename = cls.__name__ + ".json"
-        if not os.path.exists(filename):
-            return []
-        with open(filename, "r") as f:
-            json_str = f.read()
-            list_dict = cls.from_json_string(json_str)
-            return [cls.create(**d) for d in list_dict]
+        """Load objects from a JSON file and return a list of objects."""
+        file_name = cls.__name__ + ".json"
+        objects = []
+
+        try:
+            with open(file_name, "r") as file:
+                data = file.read()
+                if data:
+                    list_dicts = cls.from_json_string(data)
+                    for obj_dict in list_dicts:
+                        objects.append(cls(**obj_dict))
+        finally:
+            pass
+
+        return objects
