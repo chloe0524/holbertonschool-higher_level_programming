@@ -15,6 +15,7 @@ if __name__ == "__main__":
 
     bdd_session.add(State(name="Louisiana"))
     bdd_session.commit()
-    louisiana = bdd_asession.query(State)
-    .filter(State.name == "Louisiana").first()
+    louisiana = bdd_session.query(State).filter(State.name ==
+                                                "Louisiana").first()
     print(louisiana.id)
+    session.close()
