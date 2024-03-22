@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module printing  first State from database"""
+"""module printing first state from database"""
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -11,13 +11,13 @@ if __name__ == "__main__":
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]))
 
     Session = sessionmaker(bind=engine)
-    bdd_session = Session()
+    bdd_sessionsession = Session()
 
-    for state in bdd_session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
+    state = bdd_session.query(State).order_by(State.id).first()
 
     if state:
         print("{}: {}".format(state.id, state.name))
     else:
-        print('Nothing')
+        print("Nothing")
+
     bdd_session.close()
