@@ -1,4 +1,6 @@
-# JavaScript DOM manipulation
+
+![javascript dom](https://github.com/chloe0524/holbertonschool-higher_level_programming/assets/127857895/d7d96fdc-5a3e-41af-920c-2013a18bad46)
+
 ## 0. Color Me :red_circle:
 Write a JavaScript script that updates the text color of the header element to red (#FF0000). You must use `document.querySelector` to select the HTML tag.
 
