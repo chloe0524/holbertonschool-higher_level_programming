@@ -4,7 +4,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     data.results.forEach(movie =>
       document.querySelector('#list_movies').appendChild(Object.assign(document.createElement('li'), { textContent: movie.title }))
     );
-  } catch (error) {
-    console.error('Error fetching movies:', error);
-  }
+  } catch (error) {}
 });
